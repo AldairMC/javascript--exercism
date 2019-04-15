@@ -1,18 +1,9 @@
 export const solve = (x, y) => {
-  const v = (x**2)+(y**2)
-  var w = Math.sqrt(v)
-  var re = /[A-Za-z]/
-  if((x || y) === re){
-    return null
-  }else{
-    if(w <= 1){
-      return 10
-    }else if(w > 1 && w <= 5){
-      return 5
-    }else if(w > 5 && w <= 10){
-      return 1
-    }else{
+  const cord = (x**2)+(y**2)
+  const h = Math.sqrt(cord)
+  if(isNaN(h)) return null
+  if(h <= 1) return 10
+  if(h > 1 && h <= 5) return 5
+  if(h > 5 && h <= 10) return 1
     return 0
-    } 
-  }
-}
+} 
