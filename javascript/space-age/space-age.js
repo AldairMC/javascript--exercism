@@ -8,12 +8,10 @@ const AGE_PLANETS = {
   'uranus': 84.016846,
   'neptune': 164.79132}
  
-const earth = 31557600;
+const EARTH = 31557600;
 
 const age = (planet, time) =>{
- if(AGE_PLANETS[planet]){
-   return Number((time / (AGE_PLANETS[planet] * earth)).toFixed(2))
- }
+   return Number((time / (AGE_PLANETS[planet] * EARTH)).toFixed(2))
 }
   
 export {age}
