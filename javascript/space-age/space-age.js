@@ -11,11 +11,9 @@ const AGE_PLANETS = {
 const earth = 31557600;
 
 const age = (planet, time) =>{
-  for(let i in AGE_PLANETS){
-    if(i === planet){
-      return Number((time / (AGE_PLANETS[i] * earth)).toFixed(2))
-    }
-  }
+ if(AGE_PLANETS[planet]){
+   return Number((time / (AGE_PLANETS[planet] * earth)).toFixed(2))
+ }
 }
   
 export {age}
