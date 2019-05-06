@@ -1,12 +1,12 @@
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split("");
+
 export const isPangram = (str) => {
-  let alphabet = new Set('abcdefghijklmnopqrstuvwxyz'.split(""))
-    
-  let test = new Set(str
+      
+  let test = str
     .toLowerCase()
-    .split(""))
+    .split("");
   
-  const interseption = new Set(Array.from(alphabet).filter(x => test.has(x)));
-  var validate = (interseption.size === 26)? true : false
-  return validate
-  
+  const intersection = new Set(ALPHABET.filter(x => test.includes(x)));
+  return (intersection.size === 26);
 }
+
