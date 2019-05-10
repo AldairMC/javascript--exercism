@@ -1,11 +1,10 @@
 # Acronym exercism
 class Acronym
   def self.abbreviate(str)
-    a=[]
-    x = str.split(" ")
-    x.each do |i|
-      a.push(i[0])
-    end
-    a.join().upcase()
+    str.gsub(/\s+|[_]|[-]|\W^[']/, ' ')
+       .split(' ')
+       .map { |i| i[0] }
+       .join
+       .upcase
   end
 end
