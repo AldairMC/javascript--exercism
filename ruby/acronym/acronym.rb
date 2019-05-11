@@ -1,8 +1,6 @@
 # Acronym exercism
 class Acronym
   def self.abbreviate(str)
-    str.scan(/\b[\w]/)
-       .join
-       .upcase
+    str.scan(/\b\w/).join.upcase
   end
 end
