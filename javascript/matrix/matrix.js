@@ -1,25 +1,15 @@
 // Exercism Matrix
 export class Matrix{
-  constructor(matriz, rows){
-    this.matriz = matriz
-    this.rows = rows
-
-    const convert = 
-      this.matriz
+  constructor(matrix){
+    this.rows = matrix
         .split('\n')
-        .map(i => i.split(' ').map(Number))
-    
-    //Rows
-    this.rows = convert
-    
-    //Columns
-    const mTrans = a => {
-      return Object.keys(a[0]).map(i => {
-        return  a.map(j => {
-           return j[i]
-        })
-      })
+        .map(i => i.split(' ').map(Number));
+    this.columns = this.transpose();
     }
-    this.columns = mTrans(convert)
-  }
+  
+    transpose() {
+      return Object.keys(this.rows[0]).map(i => {
+        return this.rows.map(j => j[i]);
+      });
+    }
 }
