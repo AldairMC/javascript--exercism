@@ -1,10 +1,6 @@
 // leap Exercism
 export function isLeap(year){
-  if(year % 4 === 0){
-    return true;
-    }if(year % 100 === 0){
-        return false;
-      }if(year % 400 === 0){
-        return true;
-      }
+  let a = num % 4 === 0 && num % 100 === 0 && num % 400 === 0
+  let b = num % 4 === 0 && num % 100 != 0 && num % 400 != 0
+  return a || b  
 }
