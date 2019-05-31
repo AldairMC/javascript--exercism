@@ -23,8 +23,8 @@ export class Luhn{
       .concat(this.GET_ODD())
   }
   
-  //NAS
-  nas(){
+  //CSIN
+  csin(){
     let final = this.GET_PAIRS() 
       .join('')
       .split('')
@@ -45,9 +45,9 @@ export class Luhn{
   
   validate(){
     if((this.code.length <= 1) || this.code[0] === ' ') return false
-    if(RegExp(/[0-9]{3}\s[0-9]{3}\s[0-9]{3}/g).test(this.code)) return this.nas()
+    if(RegExp(/[0-9]{3}\s[0-9]{3}\s[0-9]{3}/g).test(this.code)) return this.csin()
     if(RegExp(/[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}/g).test(this.code)) return this.card()
-    return (RegExp(/[^\d\s]/g).test(this.code))? false : true
+    return !(RegExp(/[^\d\s]/g).test(this.code))
   }
 }
 
