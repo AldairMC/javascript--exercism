@@ -10,7 +10,7 @@ const number = {
   2000: 'MM', 3000: 'MMM'
 }
 
-export const toRoman = (num) =>{
+export const toRoman = (num) => {
 
   return num
     .toString()

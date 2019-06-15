@@ -6,7 +6,8 @@ const AGE_PLANETS = {
   'jupiter': 11.862615,
   'saturn': 29.447498,
   'uranus': 84.016846,
-  'neptune': 164.79132}
+  'neptune': 164.79132
+}
  
 const EARTH = 31557600;
 
