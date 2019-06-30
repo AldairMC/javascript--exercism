@@ -1,28 +1,32 @@
 //Difference of Squares exercise.
 
 export class Squares {
-  constructor(a) {
-    this.a = a
+  constructor(square) {
+    this.square = square
+  }
+  
+  range(){
+    let arr = []
+    let i = 1
+    while(i <= this.square){
+      arr.push(i)
+      i++
+    }
+    return arr
+  }
+  
+  sum(){
+    return this.range().reduce((a,b) => a+b)
   }
 
   get sumOfSquares() {
-    let a = 0;
-    let i = 1;
-    while(i <= this.a){
-      a += Math.pow(i, 2)
-      i++
-    }
-    return a
+     return this.range()
+      .map(i => Math.pow(i, 2))
+      .reduce((a,b) => a+b)
   }
 
   get squareOfSum() {
-    let a = 0;
-    let i = 1;
-    while(i <= this.a){
-      a += i
-      i++
-    }
-    return Math.pow(a, 2)
+   return Math.pow(this.sum(), 2)
   }
 
   get difference() {
