@@ -10,6 +10,8 @@ export class Grains {
   }
 
   total() {
-
+    const c64 = 2**64
+    const c1 = 2**0 
+    return (BigInt(c64) - BigInt(c1)).toString()
   }
 }
