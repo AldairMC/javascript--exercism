@@ -5,6 +5,11 @@
 
 export const abilityModifier = (num) => {
   const difference = (num - 10)/2
+  if(num < 3){
+    throw new Error("Ability scores must be at least 3")
+  }else if(num > 18){
+    throw new Error("Ability scores can be at most 18")
+  }
   return Math.floor(difference)  
 };
 
