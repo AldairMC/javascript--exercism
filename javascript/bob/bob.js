@@ -10,18 +10,15 @@ const auxiliar = (sentence) => {
 export const hey = (message) => {
   let aux = message
     .replace(/\s/g, '')
-    .split('')
-    .reverse()
-    .join('')
   
   if(Number(message) === 0) return 'Fine. Be that way!'
-  else if(aux[0] === '?'){
+  else if(aux[aux.length-1] === '?'){
     if(!auxiliar(aux)){
       return 'Sure.'
     }else{
       return 'Calm down, I know what I\'m doing!' 
-    } 
-  }else if(aux[0] !== '?' && auxiliar(aux)) return 'Whoa, chill out!'
+    }
+  }else if(aux[aux.length-1] !== '?' && auxiliar(aux)) return 'Whoa, chill out!'
   else return 'Whatever.'
 };
 
