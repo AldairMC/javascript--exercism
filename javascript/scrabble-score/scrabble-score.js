@@ -13,7 +13,7 @@ export const score = (word) => {
   return word
     .split('')
     .map((i, j) => Object.keys(LETTERS)
-      .filter(i => i.includes(word[j].toLowerCase())))
-    .map(i => LETTERS[i[0]])
+      .find(i => i.includes(word[j].toLowerCase())))
+    .map(i => LETTERS[i])
     .reduce((a,b) => a+b, 0)
 };
