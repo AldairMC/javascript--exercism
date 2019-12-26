@@ -27,8 +27,12 @@ export class Triplet {
       for(let j = obj.minFactor || 1; j <= obj.maxFactor; j++){
         for(let k = obj.minFactor || 1; k <= obj.maxFactor; k++){
           let triplet = new Triplet(i, j, k);
-          if((i < j && j < k)){
-            if(triplet.sum() == 180 && triplet.isPythagorean()) aux2.push(triplet);
+          if((i < j && j < k) && triplet.isPythagorean()){
+            if(!obj.sum){
+              aux2.push(triplet)
+            }else{
+              if(triplet.sum() == 180 ) aux2.push(triplet)
+            }
           }
         }
       } 
