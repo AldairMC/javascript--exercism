@@ -8,7 +8,7 @@ export class Triplet {
     this.b = b
     this.c = c
   }
-  
+  //Function aux
   hasRule(){
     return (this.a < this.b && this.b < this.c)
   }
@@ -22,22 +22,22 @@ export class Triplet {
   }
 
   isPythagorean() {
-    if(this.hasRule()) return (Math.pow(this.a, 2) + Math.pow(this.b, 2) === Math.pow(this.c, 2))
+    if(this.hasRule()) return ((this.a**2 + this.b**2) === this.c**2)
   }
 
   static where(obj) {
-    let aux2 = []
+    let aux = []
     for(let i = obj.minFactor || 1; i <= obj.maxFactor; i++){
       for(let j = obj.minFactor || 1; j <= obj.maxFactor; j++){
         for(let k = obj.minFactor || 1; k <= obj.maxFactor; k++){
           let triplet = new Triplet(i, j, k);
           if((triplet.hasRule()) && triplet.isPythagorean()){
-            if(!obj.sum) aux2.push(triplet)
-            if(triplet.sum() == 180 ) aux2.push(triplet)
+            if(!obj.sum) aux.push(triplet)
+            else if(triplet.sum() === obj.sum) aux.push(triplet)
           }
         }
       } 
     }
-    return aux2;
+    return aux;
   }
 }
