@@ -1,33 +1,24 @@
 //protein translation exercise
 const PROTEINS = {
-    'aug':'Methionine',
-    'uuu': 'Phenylalanine', 'uuc': 'Phenylalanine',
-    'uua': 'Leucine', 'uug': 'Leucine',
-    'ucu': 'Serine', 'ucc': 'Serine', 'uca': 'Serine', 'ucg': 'Serine',
-    'uau': 'Tyrosine', 'uac': 'Tyrosine',
-    'ugu': 'Cysteine', 'ugc': 'Cysteine',
-    'ugg': 'Tryptophan',
-    'uaa': 'STOP', 'uag': 'STOP', 'uga': 'STOP'
+    'AUG': 'Methionine',
+    'UUU': 'Phenylalanine', 'UUC': 'Phenylalanine',
+    'UUA': 'Leucine', 'UUG': 'Leucine',
+    'UCU': 'Serine', 'UCC': 'Serine', 'UCA': 'Serine', 'UCG': 'Serine',
+    'UAU': 'Tyrosine', 'UAC': 'Tyrosine',
+    'UGU': 'Cysteine', 'UGC': 'Cysteine',
+    'UGG': 'Tryptophan',
+    'UAA': 'STOP', 'UAG': 'STOP', 'UGA': 'STOP'
 }
 
-const aux = (codons) => {
-  let i = 0
-  let arr = []
-  while(codons[i] !== 'STOP' && i < codons.length){
-    arr.push(codons[i])
-    i++
-  }
-  return arr
-}
+const isValid = codon => (codon.length % 3 !== 0 || !(/^[A|U|G|C]+$/.test(codon)))
 
 export const translate = (codon) => {
   if(!codon) return []
-  if(codon.length % 3 !== 0 || !(/^[a|u|g|c]+$/.test(codon.toLowerCase()))) throw new Error("Invalid codon");
+  if(isValid(codon)) throw new Error("Invalid codon");
   let codons = codon
-    .toLowerCase()
+    .split(/UAA|UAG|UGA/)[0]
     .match(/.{1,3}/g)
-    .map(i => PROTEINS[i])
-  return aux(codons)
+  return codons? codons.map(i => PROTEINS[i]) : []
 };
 
 
