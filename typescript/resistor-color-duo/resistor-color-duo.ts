@@ -1,4 +1,4 @@
-let COLORS: string[] = [
+const COLORS: string[] = [
   'black', 
   'brown', 
   'red', 
@@ -16,14 +16,15 @@ export class ResistorColor {
 
   constructor(colors: string[]) {
     this.colors = colors;
-  }
-  
-  value = (): number => {
-    if(this.colors.length === 1){
-      throw new Error('At least two colors need to be present')
-    }else{
-      let nums: number[] = this.colors.map(i => COLORS.indexOf(i), 2) 
-      return Number(nums.join(''))
+    if(this.colors.length <= 1){
+      throw new Error("At least two colors need to be present")
     }
   }
+  
+  value = (): number => Number(
+    this.colors
+      .slice(0, 2)
+      .map(i => COLORS.indexOf(i))
+      .join('')
+    )
 }
