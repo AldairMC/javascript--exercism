@@ -4,7 +4,11 @@
 //
 export const countWords = (str) => {
   let obj = {}
-  const word = str.replace(/\W+/g, "-").toLowerCase().split("-")
+  const word = str
+    .replace(/[^\w']+|[\s']|('\s)/g, " ")
+    .toLowerCase()
+    .split(" ")
+    .filter( i => i !== "")
   word.map(i => {
     if(!(i in obj)){
       obj[i] = 1
