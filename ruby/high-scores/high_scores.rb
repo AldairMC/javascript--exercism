@@ -1,18 +1,22 @@
-## High score exercism
+# HighScore exercism
 class HighScores
   def initialize(scores)
-    @scores = scores
+    @scores = scores.delete_if(&:zero?)
   end
 
   def scores
-    return @scores
+    @scores
   end
 
   def latest
-    @scores.sort()[0]
+    @scores.min
   end
 
   def personal_best
-    @scores.sort{ |a, b| b <=> a }[0]
+    @scores.sort.max
+  end
+
+  def personal_top_three
+    @scores.sort.reverse.take(3)
   end
 end
