@@ -49,7 +49,7 @@ class HighScoresTest < Minitest::Test
     # skip
     scores = [30, 70]
     expected = [70, 30]
-        assert_equal expected, HighScores.new(scores).personal_top_three
+    assert_equal expected, HighScores.new(scores).personal_top_three
   end
 
   def test_personal_top_when_there_is_only_one
@@ -60,13 +60,13 @@ class HighScoresTest < Minitest::Test
   end
 
   def test_latest_score_is_not_the_personal_best
-    skip
+    # skip
     scores = [100, 40, 10, 70]
     refute HighScores.new(scores).latest_is_personal_best?
   end
 
   def test_latest_score_is_the_personal_best
-    skip
+    # skip
     scores = [70, 40, 10, 100]
     assert HighScores.new(scores).latest_is_personal_best?
   end
