@@ -19,11 +19,15 @@ class Microwave
     "0#{minutes.floor}:#{seconds}"
   end
 
+  def time_for_four_number
+    str.to_s.scan(/../)
+  end
+
   def timer
     if buttons >= 2 && (buttons % 100).zero?
-      get_minutes
+      minutes
     else
-      get_seconds
+      seconds
     end
   end
 end
