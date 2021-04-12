@@ -8,36 +8,38 @@ class Microwave
     @buttons = buttons
   end
 
-  def seconds_minutes_less_ten(num)
-    num < 10 ? "0#{num}" : num
+  def timer
+    if buttons < 60
+      buttons_less_than_sixty
+    elsif buttons.between?(60, 99)
+      buttons_between_sixty_and_one_hundred
+    else
+      buttons_greather_than_one_hundred
+    end
   end
 
-  def number_less_sxty
-    "00:#{seconds_minutes_less_ten(buttons)}"
+  private
+
+  def format_seconds_and_minutes(num)
+    num.to_s.rjust(2, '0')
   end
 
-  def number_between_sixty_one_hundred
+  def buttons_less_than_sixty
+    "00:#{format_seconds_and_minutes(buttons)}"
+  end
+
+  def buttons_between_sixty_and_one_hundred
     seconds = buttons - 60
-    "01:#{seconds_minutes_less_ten(seconds)}"
+    "01:#{format_seconds_and_minutes(seconds)}"
   end
 
-  def number_more_one_hundred
+  def buttons_greather_than_one_hundred
     minutes = buttons / 100
     seconds = buttons - minutes * 100
     if seconds >= 60
       seconds -= 60
       minutes += 1
     end
-    "#{seconds_minutes_less_ten(minutes)}:#{seconds_minutes_less_ten(seconds)}"
-  end
-
-  def timer
-    if buttons < 60
-      number_less_sxty
-    elsif buttons >= 60 && buttons < 100
-      number_between_sixty_one_hundred
-    else
-      number_more_one_hundred
-    end
+    "#{format_seconds_and_minutes(minutes)}:#{format_seconds_and_minutes(seconds)}"
   end
 end
