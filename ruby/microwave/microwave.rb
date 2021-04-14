@@ -25,12 +25,12 @@ class Microwave
   end
 
   def buttons_less_than_sixty
-    "00:#{format_seconds_and_minutes(buttons)}"
+    format_seconds_and_minutes(buttons).rjust(5, '00:')
   end
 
   def buttons_between_sixty_and_one_hundred
     seconds = buttons - 60
-    "01:#{format_seconds_and_minutes(seconds)}"
+    format_seconds_and_minutes(seconds).rjust(5, '01:')
   end
 
   def buttons_greather_than_one_hundred
