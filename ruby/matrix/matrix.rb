@@ -5,14 +5,14 @@ class Matrix
   attr_reader :matrix_string
 
   def initialize(matrix_string)
-    @matrix_string = matrix_string.split("\n").map { |key| key.split(' ').map(&:to_i) }
+    @matrix_string = matrix_string
   end
 
   def rows
-    matrix_string
+    @rows ||= matrix_string.each_line.map { |key| key.split.map(&:to_i) }
   end
 
   def columns
-    matrix_string.transpose
+    rows.transpose
   end
 end
