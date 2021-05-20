@@ -8,25 +8,23 @@ class Series
     @digits = digits
   end
 
-  def slices(num)
-    _end = num-1
-    num_loop = (digits.length-(num-1))
-    if(num > digits.length)
-      raise "Your number is invalid"
-    else
-      separate(0, _end, num_loop)
-    end 
+  def slices(slice)
+    lower_limit = slice - 1
+    iterator = (digits.length - (slice - 1))
+    raise ArgumentError if slice > digits.length
+
+    separate_digits(0, lower_limit, iterator)
   end
 
   private
 
-  def separate(_start, _end, num_loop)
-    aux = []
-    num_loop.times do |x|
-      aux << digits[_start.._end]
-      _start += 1
-      _end += 1
+  def separate_digits(higher_limit, lower_limit, iterator)
+    result = []
+    iterator.times do
+      result << digits[higher_limit..lower_limit]
+      higher_limit += 1
+      lower_limit += 1
     end
-    aux
+    result
   end
 end
