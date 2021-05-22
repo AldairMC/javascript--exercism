@@ -9,11 +9,8 @@ class SumOfMultiples
   end
 
   def to(limit)
-    args
-      .to_a
-      .map { |itr| (1...limit).select { |ele| (ele % itr).zero? } }
-      .flatten
-      .uniq
-      .sum
+    return 0 if args.empty? || args[0].zero?
+
+    (args.min...limit).select { |ele| args.any? { |itr| (ele % itr).zero? } }.sum
   end
 end
