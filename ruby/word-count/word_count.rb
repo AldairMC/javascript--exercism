@@ -9,8 +9,6 @@ class Phrase
   end
 
   def word_count
-    phrase.downcase.scan(/\b[\w']+\b/i).tally do |a, k|
-      k[a] += 1
-    end
+    phrase.downcase.scan(/\b[\w']+\b/i).tally
   end
 end
