@@ -5,11 +5,11 @@ class Phrase
   attr_reader :phrase
 
   def initialize(phrase)
-    @phrase = phrase.downcase
+    @phrase = phrase
   end
 
   def word_count
-    phrase.scan(/\b[\w']+\b/i).each_with_object(Hash.new(0)) do |a, k|
+    phrase.downcase.scan(/\b[\w']+\b/i).tally do |a, k|
       k[a] += 1
     end
   end
